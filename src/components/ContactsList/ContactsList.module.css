@@ -1,0 +1,17 @@
+.contactsListItem {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  margin-left: 10px;
+  height: fit-content;
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
+}

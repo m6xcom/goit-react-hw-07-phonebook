@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.addContactBtn {
+  margin-top: 20px;
+  width: 70%;
+  margin-left: 15%;
+}
+
+label:not(:first-child) {
+  margin-top: 10px;
+}
