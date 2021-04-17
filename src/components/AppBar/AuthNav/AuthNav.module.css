@@ -3,14 +3,9 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #007bff;
 }
 
 .navListItem {
-  float: left;
-}
-
-.navListItem:nth-child(n + 3) {
   float: right;
 }
 

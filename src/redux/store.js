@@ -11,9 +11,16 @@ import {
 import storage from "redux-persist/lib/storage";
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { contacts } from "./contacts/contacts-reducer";
+import { auth } from "./user/user-reducer";
+
+const userConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+};
 
 const store = configureStore({
-  reducer: { contacts: contacts },
+  reducer: { auth: persistReducer(userConfig, auth), contacts: contacts },
   devTools: process.env.NODE_ENV === "development",
   middleware: getDefaultMiddleware({
     serializableCheck: {
@@ -22,4 +29,6 @@ const store = configureStore({
   }),
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export default { store, persistor };

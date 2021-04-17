@@ -1,0 +1,12 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.userMenu > h1 {
+  font-size: 20px;
+  color: #f4f9ff;
+  margin-right: 10px;
+  margin-bottom: 0px;
+}
