@@ -22,7 +22,6 @@ class ContactForm extends Component {
         className={style.form}
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(this.state);
           if (
             this.props.contacts.every(
               (el) => el.name.toLowerCase() !== this.state.name.toLowerCase()

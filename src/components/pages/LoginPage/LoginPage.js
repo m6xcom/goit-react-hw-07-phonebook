@@ -19,7 +19,6 @@ class LoginPage extends Component {
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(this.state);
           this.props.onLogin(this.state);
           this.setState({ email: "", password: "" });
           e.target.reset();
