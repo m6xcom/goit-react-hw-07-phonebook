@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { ListGroup, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import {
   fetchContacts,
   deleteContact,
 } from "../../redux/contacts/contacts-operations";
 import { getFilteredContacts } from "../../redux/contacts/contacts-selectors";
+import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./ContactsList.module.css";
 
 class ContactsList extends Component {
@@ -16,18 +18,20 @@ class ContactsList extends Component {
   render() {
     const { contacts, deleteContact } = this.props;
     return (
-      <ul>
+      <ListGroup className={style.contactsList}>
         {contacts.map((el) => {
           return (
-            <li className={style.contactsListItem} key={el.id}>
+            <ListGroup.Item className={style.contactsListItem} key={el.id}>
               <p>
                 {el.name} : {el.number}
               </p>
-              <button onClick={() => deleteContact(el.id)}>Delete</button>
-            </li>
+              <Button variant="primary" onClick={() => deleteContact(el.id)}>
+                Delete
+              </Button>
+            </ListGroup.Item>
           );
         })}
-      </ul>
+      </ListGroup>
     );
   }
 }

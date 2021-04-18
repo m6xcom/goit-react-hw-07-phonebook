@@ -1,26 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Form } from "react-bootstrap";
 import shortid from "shortid";
 import PropTypes from "prop-types";
 import { FILTERCHANGE } from "../../redux/contacts/contacts-actions";
+import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./Filter.module.css";
 
 const Filter = ({ filterChange }) => {
   const filterInput = shortid.generate();
   return (
-    <>
-      <label className={style.title} htmlFor={filterInput}>
-        Find contacts by name
-      </label>
-      <input
+    <Form.Group>
+      <Form.Label className={style.title}>Find contacts by name</Form.Label>
+      <Form.Control
         id={filterInput}
         type="text"
         onChange={(e) => {
           filterChange(e.target.value.toLowerCase());
         }}
         name="filter"
-      ></input>
-    </>
+      ></Form.Control>
+    </Form.Group>
   );
 };
 

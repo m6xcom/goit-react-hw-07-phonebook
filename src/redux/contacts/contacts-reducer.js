@@ -17,15 +17,11 @@ const items = createReducer([], {
   [FETCHCONTACTSUCCESS]: (_, { payload }) => {
     return payload;
   },
-  [FETCHCONTACTERROR]: (_, { payload }) => {
-    console.log(payload);
-  },
+
   [ADDCONTACTSUCCESS]: (state, { payload }) => {
     return [...state, payload];
   },
-  [ADDCONTACTERROR]: (_, { payload }) => {
-    console.log(payload);
-  },
+
   [DELETECONTACTSUCCESS]: (state, { payload }) => {
     return state.filter((el) => el.id !== payload);
   },
@@ -33,6 +29,18 @@ const items = createReducer([], {
 
 const filter = createReducer("", {
   [FILTERCHANGE.type]: (state, { payload }) => payload,
+});
+
+const error = createReducer("", {
+  [FETCHCONTACTERROR]: (_, { payload }) => {
+    return payload.message;
+  },
+  [ADDCONTACTERROR]: (_, { payload }) => {
+    return payload.message;
+  },
+  [DELETECONTACTERROR]: (_, { payload }) => {
+    return payload.message;
+  },
 });
 
 const loading = createReducer("", {
@@ -50,5 +58,6 @@ const loading = createReducer("", {
 export const contacts = combineReducers({
   items,
   filter,
+  error,
   loading,
 });

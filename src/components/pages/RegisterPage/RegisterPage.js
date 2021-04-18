@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
 import { registerUser } from "../../../redux/user/user-operations";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -68,3 +69,7 @@ const mapDispatchToProps = {
 };
 
 export default connect(null, mapDispatchToProps)(RegisterPage);
+
+RegisterPage.propTypes = {
+  onRegister: PropTypes.func,
+};

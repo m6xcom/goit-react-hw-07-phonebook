@@ -1,10 +1,15 @@
 .userMenu {
   display: flex;
+  padding: 14px 16px;
+  width: 100%;
+}
+.user {
+  display: flex;
   align-items: center;
+  margin-left: auto;
   margin-right: 20px;
 }
-
-.userMenu > h1 {
+.user > h1 {
   font-size: 20px;
   color: #f4f9ff;
   margin-right: 10px;

@@ -1,41 +1,44 @@
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { Component, Suspense, lazy } from "react";
+import { Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { isAuth } from "../../redux/user/user-selectors";
-import routes from "../../services/routes";
+import PropTypes from "prop-types";
+import { routes } from "../../services/routes";
 import { getCurrentUser } from "../../redux/user/user-operations";
+import PrivateRoute from "../AppBar/PrivateRoute";
+import PublicRoute from "../AppBar/PublicRoute";
 import AppBar from "../AppBar/AppBar";
-import HomePage from "../pages/HomePage/HomePage";
-import Contacts from "../pages/Contacts/Contacts";
-import RegisterPage from "../pages/RegisterPage/RegisterPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
 import "./App.css";
+
+const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
+const Contacts = lazy(() => import("../pages/Contacts/Contacts"));
 
 class App extends Component {
   componentDidMount() {
     this.props.getCurrentUser();
   }
+  static propTypes = {
+    getCurrentUser: PropTypes.func,
+  };
   render() {
     return (
       <>
-        <AppBar isAuth={this.props.isAuth} />
-        <Switch>
-          <Route path={routes.homePage} exact component={HomePage} />
-          <Route path={routes.contactsPage} component={Contacts} />
-          <Route path={routes.registerPage} component={RegisterPage} />
-          <Route path={routes.loginPage} component={LoginPage} />
-        </Switch>
+        <AppBar />
+        <Suspense fallback={null}>
+          <Switch>
+            <PublicRoute path={routes.registerPage} component={RegisterPage} />
+            <PublicRoute path={routes.loginPage} component={LoginPage} />
+            <PrivateRoute path={routes.contactsPage} component={Contacts} />
+            <Redirect to={routes.loginPage} />
+          </Switch>
+        </Suspense>
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  isAuth: isAuth(state),
-});
-
 const mapDispatchToProps = {
   getCurrentUser: getCurrentUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

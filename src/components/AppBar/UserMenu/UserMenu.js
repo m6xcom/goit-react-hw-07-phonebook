@@ -1,20 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getUserName } from "../../../redux/user/user-selectors";
+import PropTypes from "prop-types";
+import { getEmail } from "../../../redux/user/user-selectors";
 import { logoutUser } from "../../../redux/user/user-operations";
 import style from "./UserMenu.module.css";
 
-const UserMenu = ({ username, onLogout }) => {
+const UserMenu = ({ email, onLogout }) => {
   return (
     <div className={style.userMenu}>
-      <h1>Welcome {username}</h1>
-      <button onClick={onLogout}>LogOut</button>
+      <div className={style.user}>
+        <h1>{email}</h1>
+        <button onClick={onLogout}>LogOut</button>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  username: getUserName(state),
+  email: getEmail(state),
 });
 
 const mapDispatchToProps = {
@@ -22,3 +25,8 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
+
+UserMenu.propTypes = {
+  email: PropTypes.string,
+  onLogout: PropTypes.func,
+};
