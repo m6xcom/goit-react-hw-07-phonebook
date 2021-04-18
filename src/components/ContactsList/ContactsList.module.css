@@ -19,7 +19,7 @@
   background-color: #fdfdfe;
 }
 
-button {
+.deleteButton {
   margin-left: 10px;
   height: fit-content;
 }

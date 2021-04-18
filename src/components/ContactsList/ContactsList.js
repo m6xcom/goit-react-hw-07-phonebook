@@ -25,7 +25,11 @@ class ContactsList extends Component {
               <p>
                 {el.name} : {el.number}
               </p>
-              <Button variant="primary" onClick={() => deleteContact(el.id)}>
+              <Button
+                className={style.deleteButton}
+                variant="primary"
+                onClick={() => deleteContact(el.id)}
+              >
                 Delete
               </Button>
             </ListGroup.Item>
