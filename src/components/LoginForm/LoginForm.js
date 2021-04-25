@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
-import { loginUser } from "../../../redux/user/user-operations";
+import { loginUser } from "../../redux/user/user-operations";
 import "bootstrap/dist/css/bootstrap.min.css";
-import style from "./LoginPage.module.css";
+import style from "./LoginForm.module.css";
 
-class LoginPage extends Component {
+class LoginForm extends Component {
   state = {
     email: "",
     password: "",
@@ -55,8 +55,8 @@ const mapDispatchToProps = {
   onLogin: loginUser,
 };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(null, mapDispatchToProps)(LoginForm);
 
-LoginPage.propTypes = {
+LoginForm.propTypes = {
   onLogin: PropTypes.func,
 };

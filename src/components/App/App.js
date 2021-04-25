@@ -9,9 +9,9 @@ import PublicRoute from "../AppBar/PublicRoute";
 import AppBar from "../AppBar/AppBar";
 import "./App.css";
 
-const RegisterPage = lazy(() => import("../pages/RegisterPage/RegisterPage"));
-const LoginPage = lazy(() => import("../pages/LoginPage/LoginPage"));
-const Contacts = lazy(() => import("../pages/Contacts/Contacts"));
+const RegisterPage = lazy(() => import("../../pages/RegisterPage/RegisterPage"));
+const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
+const Contacts = lazy(() => import("../../pages/Contacts/Contacts"));
 
 class App extends Component {
   componentDidMount() {

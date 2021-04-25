@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button, Form } from "react-bootstrap";
-import { registerUser } from "../../../redux/user/user-operations";
+import { registerUser } from "../../redux/user/user-operations";
 import "bootstrap/dist/css/bootstrap.min.css";
-import style from "./RegisterPage.module.css";
+import style from "./RegisterForm.module.css";
 
-class RegisterPage extends Component {
+class RegisterForm extends Component {
   state = {
     name: "",
     email: "",
@@ -68,8 +68,8 @@ const mapDispatchToProps = {
   onRegister: registerUser,
 };
 
-export default connect(null, mapDispatchToProps)(RegisterPage);
+export default connect(null, mapDispatchToProps)(RegisterForm);
 
-RegisterPage.propTypes = {
+RegisterForm.propTypes = {
   onRegister: PropTypes.func,
 };
